@@ -1,0 +1,158 @@
+/*
+ * Amazon-inspired theme overrides
+ * Enhances the store with a clean, trustworthy e-commerce look
+ */
+
+/* Main content area - white cards on light gray like Amazon */
+.content-for-layout .shopify-section .section-background.color-scheme-1,
+.content-for-layout .section-background.color-scheme-1 {
+  background-color: #eaeded;
+}
+
+.shopify-section .section:not([class*="color-scheme-"]) {
+  background-color: #ffffff;
+}
+
+/* Product & collection cards - clean white box with subtle shadow */
+.product-card,
+.collection-card,
+.resource-card {
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+}
+
+.product-card:hover,
+.collection-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: #ff9900;
+}
+
+/* Product card content spacing - Amazon-style density */
+.product-card__content {
+  padding: 0.75rem 1rem 1rem;
+}
+
+/* Price styling - bold and prominent */
+.product-card .price,
+.price-item {
+  font-weight: 700;
+  color: #0f1111;
+}
+
+.price__sale .price-item--sale {
+  color: #b12704;
+}
+
+/* Primary buttons - Amazon orange */
+.button--primary,
+[data-shopify-buttoncontainer] button[type="submit"],
+button.shopify-payment-button__button {
+  font-weight: 600 !important;
+  text-transform: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.button--primary:hover,
+[data-shopify-buttoncontainer] button[type="submit"]:hover {
+  box-shadow: 0 2px 8px rgba(255, 153, 0, 0.4);
+}
+
+/* Header - ensure dark bar stretches and search stands out */
+#header-group .header-section,
+#header-group .header-announcements {
+  border-bottom: none;
+}
+
+#header-group .header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Search input in header - rounded and prominent */
+.header [type="search"],
+.header .search__input,
+.header input[name="q"] {
+  border-radius: 4px 0 0 4px;
+  border: none;
+  min-height: 40px;
+}
+
+/* Section titles - clear hierarchy */
+.section-header__title,
+.section__header .title {
+  font-weight: 700;
+  color: #0f1111;
+  letter-spacing: -0.02em;
+}
+
+/* Dividers and spacing between sections */
+.shopify-section + .shopify-section {
+  margin-top: 0;
+}
+
+.section--padding {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .section--padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Footer area - subtle top border */
+.footer {
+  border-top: 1px solid #dddcdc;
+  margin-top: 2rem;
+}
+
+/* Links - teal/blue hover like Amazon */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Badge (sale, etc.) - small and readable */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Input fields - clean borders */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea,
+select {
+  border-radius: 4px;
+  border: 1px solid #d5d9d9;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #ff9900;
+  outline-offset: 1px;
+}
+
+/* Cart drawer/page - clean list look */
+.cart-item,
+.cart-products__item {
+  border-bottom: 1px solid #eaeded;
+  padding: 1rem 0;
+}
+
+/* Trust strip / secondary info - muted text */
+.caption,
+.product-card__caption,
+.text--subdued {
+  color: #565959;
+  font-size: 0.8125rem;
+}
