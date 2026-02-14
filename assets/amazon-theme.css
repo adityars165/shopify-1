@@ -1,158 +1,381 @@
 /*
- * Amazon-inspired theme overrides
- * Enhances the store with a clean, trustworthy e-commerce look
+ * Premium e-commerce theme overrides
+ * Visually appealing, trustworthy storefront with clear hierarchy
  */
 
-/* Main content area - white cards on light gray like Amazon */
+/* ========== Global polish ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(255, 153, 0, 0.25);
+  color: #0f1111;
+}
+
+/* ========== Main layout ========== */
 .content-for-layout .shopify-section .section-background.color-scheme-1,
 .content-for-layout .section-background.color-scheme-1 {
-  background-color: #eaeded;
+  background: linear-gradient(180deg, #e8e8e8 0%, #eaeded 12%, #eaeded 100%);
 }
 
 .shopify-section .section:not([class*="color-scheme-"]) {
   background-color: #ffffff;
 }
 
-/* Product & collection cards - clean white box with subtle shadow */
+/* ========== Product & collection cards ========== */
 .product-card,
 .collection-card,
 .resource-card {
   background: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   border: 1px solid #e7e7e7;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .product-card:hover,
-.collection-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+.collection-card:hover,
+.resource-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.06);
   border-color: #ff9900;
 }
 
-/* Product card content spacing - Amazon-style density */
-.product-card__content {
-  padding: 0.75rem 1rem 1rem;
+/* Card image - subtle zoom on hover */
+.product-card .card-gallery,
+.collection-card .collection-card__image,
+.resource-card .resource-card__media {
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
 }
 
-/* Price styling - bold and prominent */
+.product-card:hover .card-gallery img,
+.collection-card:hover .collection-card__image img {
+  transform: scale(1.04);
+  transition: transform 0.4s ease;
+}
+
+.product-card .card-gallery img,
+.collection-card .collection-card__image img {
+  transition: transform 0.4s ease;
+}
+
+/* Product card content */
+.product-card__content {
+  padding: 1rem 1.1rem 1.25rem;
+}
+
+/* Product title - tighter line height, max 2 lines feel */
+.product-card .product-card__title,
+.product-card [class*="title"] {
+  font-weight: 600;
+  color: #0f1111;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card .product-card__title:hover,
+.product-card [class*="title"]:hover {
+  color: #007185;
+}
+
+/* Price - bold and prominent */
 .product-card .price,
 .price-item {
   font-weight: 700;
   color: #0f1111;
+  font-size: 1.1em;
 }
 
 .price__sale .price-item--sale {
   color: #b12704;
 }
 
-/* Primary buttons - Amazon orange */
+.price__regular .price-item--regular {
+  color: #0f1111;
+}
+
+/* Badges - pill style, readable */
+.badge,
+.product-card .badge,
+[class*="badge"] {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Quick add / Add to cart on card */
+.product-card .quick-add__button,
+.product-card .button,
+.product-card [type="submit"] {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card .quick-add__button:hover,
+.product-card .button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.35);
+}
+
+/* ========== Primary buttons site-wide ========== */
 .button--primary,
 [data-shopify-buttoncontainer] button[type="submit"],
 button.shopify-payment-button__button {
   font-weight: 600 !important;
   text-transform: none;
   border-radius: 8px;
-  padding: 0.5rem 1.25rem;
-  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(213, 217, 217, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button--primary:hover,
 [data-shopify-buttoncontainer] button[type="submit"]:hover {
-  box-shadow: 0 2px 8px rgba(255, 153, 0, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 153, 0, 0.4);
 }
 
-/* Header - ensure dark bar stretches and search stands out */
+/* ========== Header ========== */
 #header-group .header-section,
 #header-group .header-announcements {
   border-bottom: none;
 }
 
 #header-group .header {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Search input in header - rounded and prominent */
+/* Announcement bar - more presence */
+.header-announcements {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Search in header */
 .header [type="search"],
 .header .search__input,
 .header input[name="q"] {
-  border-radius: 4px 0 0 4px;
+  border-radius: 6px 0 0 6px;
   border: none;
-  min-height: 40px;
+  min-height: 42px;
+  padding-inline: 1rem;
 }
 
-/* Section titles - clear hierarchy */
+/* ========== Section headers ========== */
 .section-header__title,
-.section__header .title {
-  font-weight: 700;
+.section__header .title,
+.section-resource-list__header .title {
+  font-weight: 800;
   color: #0f1111;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-/* Dividers and spacing between sections */
+.section-header__title::after,
+.section__header .title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9900, #febd69);
+  border-radius: 2px;
+}
+
+/* Subheading under section title */
+.section-header__subheading,
+.section__header .subheading {
+  color: #565959;
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+/* ========== Hero / Slideshow ========== */
+.slideshow,
+.hero {
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.slideshow__slide-content,
+.hero__content {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow .heading,
+.hero .heading {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* ========== Resource list / product grid ========== */
+.section-resource-list,
+.resource-list {
+  --resource-list-column-gap-desktop: 24px;
+  --resource-list-row-gap-desktop: 28px;
+}
+
+@media screen and (min-width: 750px) {
+  .resource-list__item {
+    padding: 2px;
+  }
+}
+
+/* ========== Spacing and sections ========== */
 .shopify-section + .shopify-section {
   margin-top: 0;
 }
 
-.section--padding {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.section--padding,
+.section.spacing-style {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 @media screen and (min-width: 750px) {
-  .section--padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+  .section--padding,
+  .section.spacing-style {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 }
 
-/* Footer area - subtle top border */
-.footer {
-  border-top: 1px solid #dddcdc;
-  margin-top: 2rem;
+/* ========== Footer ========== */
+.footer,
+[class*="footer"] {
+  border-top: 2px solid #dddcdc;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f8f8 100%);
 }
 
-/* Links - teal/blue hover like Amazon */
+.footer a:hover,
+.footer-content a:hover {
+  color: #007185;
+  text-decoration: underline;
+}
+
+/* ========== Links ========== */
+a {
+  transition: color 0.2s ease;
+}
+
 a:hover {
   text-decoration: underline;
 }
 
-/* Badge (sale, etc.) - small and readable */
-.badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-}
-
-/* Input fields - clean borders */
+/* ========== Inputs ========== */
 input[type="text"],
 input[type="email"],
 input[type="search"],
 textarea,
 select {
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid #d5d9d9;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: #a2a6ac;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid #ff9900;
-  outline-offset: 1px;
+  outline: none;
+  border-color: #ff9900;
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.2);
 }
 
-/* Cart drawer/page - clean list look */
+/* ========== Cart ========== */
 .cart-item,
 .cart-products__item {
   border-bottom: 1px solid #eaeded;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
+  transition: background 0.2s ease;
 }
 
-/* Trust strip / secondary info - muted text */
+.cart-item:hover,
+.cart-products__item:hover {
+  background: rgba(234, 237, 237, 0.4);
+}
+
+/* ========== Trust / subdued text ========== */
 .caption,
 .product-card__caption,
 .text--subdued {
   color: #565959;
   font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+/* ========== Featured collection / banner blocks ========== */
+.media-with-content,
+.featured-collection {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== Dividers ========== */
+.section-wrapper + .section-wrapper {
+  margin-top: 0;
+}
+
+/* ========== Focus for accessibility ========== */
+:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 2px;
+}
+
+/* ========== Collection cards ========== */
+.collection-card__content,
+.featured-blog-posts-card__content {
+  padding: 1rem 1.1rem;
+}
+
+.collection-card .collection-card__title,
+.resource-card .resource-card__title {
+  font-weight: 600;
+  color: #0f1111;
+}
+
+.collection-card:hover .collection-card__title,
+.resource-card:hover .resource-card__title {
+  color: #007185;
+}
+
+/* ========== Sale price strikethrough ========== */
+.price__sale s,
+.price s {
+  color: #565959;
+  font-weight: 500;
 }
